@@ -14,4 +14,5 @@ Cess is a key link in Polkadot ecology. It can not only provide elastic and scal
 
 |CIP #   | Title  | Author  | Status  |
 |---|---|---|---|
-|[0001](https://github.com/CESSProject/cess-pallet-proposal)   | CIP Purpose and Guidelines  | swowk  | Active  |
+
+|[0002](https://github.com/CESSProject/cess-pallet-proposal)   | Proposal for Offering Storage Pallet to Substrate FRAME  | swowk  | Active  |
