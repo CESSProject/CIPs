@@ -1,8 +1,11 @@
 # CESS Improvement Protocol
 The CESS Improvement Protocol contains the set of fundamental governing principles for the Filecoin Network. It outlines the vision for Filecoin and the principles, processes, and parties involved in making decisions that affect the future of the network. It also describes how improvements to these rules can be proposed and ratified.
 
+At present, the cess development path will adopt the following methods: CIP --> Design document --> development and implementation. These documents can be found on our official website or GitHub resources.
+
 # Mission
 The goal of the CIP project is to document standardized protocols for CESS clients and applications and to document them in a high quality and implementable way.
+
 
 
 # The  Role of CIPs
@@ -10,7 +13,9 @@ CESS Improvement Proposals (FIPs) are the primary mechanism by which the CESS en
 
 Cess is a key link in Polkadot ecology. It can not only provide elastic and scalable storage for the whole Polkadot ecology, but also provide friendly storage services for other ecological blockchain applications. At present, CIPS is not very perfect. We are gradually soliciting good ideas from the community. Once adopted, we will give rich returns.
 
-## CIPs
+# 
+
+# CIPs
 
 |CIP #   | Title  | Author  | Status  |
 |---|---|---|---|
