@@ -9,7 +9,7 @@ The goal of the CIP project is to document standardized protocols for CESS clien
 
 
 # The  Role of CIPs
-CESS Improvement Proposals (FIPs) are the primary mechanism by which the CESS enthusiasts can submit, discuss, and approve changes relevant to the CESS network. These discussions and decisions should be guided by the governance and design principles above.
+CESS Improvement Proposals (CIPs) are the primary mechanism by which the CESS enthusiasts can submit, discuss, and approve changes relevant to the CESS network. These discussions and decisions should be guided by the governance and design principles above.
 
 CESS is a key link in Polkadot ecology. It can not only provide elastic and scalable storage for the whole Polkadot ecology, but also provide friendly storage services for other ecological blockchain applications. At present, CIPS is not very perfect. We are gradually soliciting good ideas from the community. Once adopted, we will give rich returns.
 
