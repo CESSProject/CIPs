@@ -74,4 +74,4 @@ So far, one of the team's project [**CESS**](https://github.com/CESSProject/cess
 The above is the entire content of the proposal for offering storage pallet to Substrate community. We would like to get feedback about this proposal and if it fits within overall Polakdot/Substrate ecosystem development.
 
 ## Acknowledge
-We are pleased to announce that cip-2 has been accepted by Web3 foundation, which can be seen as follows: https://github.com/w3f/Grants-Program/pull/855.
+We are pleased to announce that CIP-1 has been accepted by Web3 foundation, which can be seen as follows: https://github.com/w3f/Grants-Program/pull/855.
