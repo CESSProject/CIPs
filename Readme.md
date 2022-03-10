@@ -16,7 +16,7 @@ CESS is a key link in Polkadot ecology. It can not only provide elastic and scal
 # The fomat of CIPs 
 At present, there are no strict format requirements for CIPS management, but we suggest to adopt these parts, such as the purpose of CIPS, the simple background of CIPS, the idea of CIPS, etc. 
 
-If you intend to output a good scheme for CESS, you can refer to CIP1.
+If you intend to output a good scheme for CESS, you can refer to CIP-1.
 
 # CIPs
 
