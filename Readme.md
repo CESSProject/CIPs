@@ -24,3 +24,4 @@ If you intend to output a good scheme for CESS, you can refer to CIP-1.
 |---|---|---|---|
 |[0001](https://github.com/CESSProject/CIPs/blob/main/CIP-0.md)   | CIP Purpose and Guidelines  | bytestocker  | Active  |
 |[0002](https://github.com/CESSProject/cess-pallet-proposal)   | Proposal for Offering Storage Pallet to Substrate FRAME  | swowk  | Active  |
+|[0002](https://github.com/CESSProject/CIPs/blob/main/CIP-2.md)   | Proof of Data Reduplication and Recovery  | swowk  | Active  |
