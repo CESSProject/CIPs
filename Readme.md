@@ -1,3 +1,5 @@
+# ![CESS](https://raw.githubusercontent.com/Cumulus2021/W3F-illustration/main/banner5.png)
+
 # CESS Improvement Protocol
 The CESS Improvement Protocol contains the set of fundamental governing principles for the Filecoin Network. It outlines the vision for Filecoin and the principles, processes, and parties involved in making decisions that affect the future of the network. It also describes how improvements to these rules can be proposed and ratified.
 
