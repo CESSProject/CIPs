@@ -213,11 +213,96 @@ Returns file data based on the user's download request link. If the file does no
 2. Check if the local cache is hit. First, check the cached file list. If it exists, it is considered a hit. If it does not exist in the list, check if the cache file exists in the specified directory. If the file matches, it is considered a hit.
 3. If it is a hit, return the file directly. If it not, handle it differently depending on the situation: 
 4. If the file is deleted on-chain, delete the ticket record and return an error message.
-  - If it is in the list of failed caching files, delete the ticket record and return an error message.
-  - If the file is lost, return the caching progress, also considered a success.
+    - If it is in the list of failed caching files, delete the ticket record and return an error message.
+    - If the file is lost, return the caching progress, also considered a success.
 
 **(3) Flowchart**
 
 <img src="https://user-images.githubusercontent.com/15166250/223345188-ac23ec18-f82c-409d-b8ad-f934e59ba29a.svg" />
 
+##### 5. Cache Files:
+
+**(1) Function overview**
+
+Periodically execute cache tasks to download the file blocks in the current cache task from the storage node.
+
+**(2) Basic process**
+
+1. Iterate the cache task list.
+2. Parse the file hash from the block ID. If there is no directory named after the file hash, create a directory with the file hash as its name.
+3. Start the download task if the file does not exist, and download it from the storage nodes.
+4. Check whether the file is downloaded successfully. If it fails, add the file block to the cache failure list.
+
+##### 6. Archive the Hash List of Cached Files Periodically:
+
+**(1) Function overview**
+
+Periodically execute the archive task to archive the locally cached file hashes to the metadata.json file.
+
+**(2) Basic process**
+
+1. Iterate the list of cached files and organize the information format.
+2. Rewrite the metadata.json file based on the organized information list.
+
+##### 7. Clearing Strategy:
+
+**(1) Function overview**
+
+Set the maximum cache capacity, when the cached capacity reaches 95% of the maximum capacity, automatically cache files, release disk space until it reaches 80% of the maximum capacity.
+
+**(2) Basic process**
+
+1. Check if the current usage space is 95% of the maximum capacity. If it exceeds, start executing the task.
+2. Randomly select files to delete, probabilities dynamically adjusted by the clearing space of this scheduled task and the current usage space. and generate a list.
+3. Iterate the random list, add the files to the deletion queue one by one until the space requirements are met.
+
+#### HTTP interface
+
+- Query cache miner information
+
+| URL      | /stats |
+| -------- | ------ |
+| Method   | GET    |
+| Request  | None   |
+| Response | { <br> "result": true, <br> "data": { <br> "geoLocation": "Asia", <br> "bytePrice": 10000, <br> "speed": 10485760, <br> "status": "active" <br> } <br> } |
+
+- Query the cached file hash list
+
+| URL      | /cached |
+| -------- | ------- |
+| Method   | GET     |
+| Request  | None    |
+| Response | { <br> "result": true, <br> "data": [ <br> "0xffee", <br> "0xffff" <br> ] <br> } |
+
+- Query file
+
+| URL      | /file/{$hash} |
+| -------- | ------------- |
+| Method   | GET           |
+| Request  | None          |
+| Response | { <br> "result": true, <br> "data": { <br> "price": 1048576000000, <br> "size": 104857600, <br> "shardCount": 10 <br> } <br> } |
+
+- Download File
+
+| URL     | /download |
+| ------- | --------- |
+| Method  | POST      |
+| Request | { <br> "billId": "0xbbbb", <br> "hash": "0xffff" <br> } |
+| Response | Stream |
+
+**Users pay by for downloads directly**
+
+- What motivates cache miners to join the CESS network?
+
+The simplest solution to this problem is to have retrieval nodes pay cache miners for every download. As long as the price is right, this will bring cache miners into the network.
+
+- This direct payment method has some advantages over the third-party subsidy download method.
+
+First, each download process is a local exchange between two entities: a retrieval node and a cache miner node. This means that at the end of this exchange process, both parties get what they need, so there is no need for further arbitration or accounting processes.
+
+Secondly, as the retrieval node needs to pay the cache miner node for the transaction, it can also prevent the retrieval node from launching a witch attack or distributed denial of service attack on the cache miner nodes.
+
+## Copyright
+
+Copyright and related rights waived via [CC0](../LICENSE.md).
 
