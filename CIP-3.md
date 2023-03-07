@@ -304,5 +304,5 @@ Secondly, as the retrieval node needs to pay the cache miner node for the transa
 
 ## Copyright
 
-Copyright and related rights waived via [CC0](../LICENSE.md).
+Copyright and related rights waived via [CC0](https://github.com/CESSProject/CIPs/blob/main/CIP-0.md).
 
