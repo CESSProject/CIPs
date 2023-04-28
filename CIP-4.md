@@ -31,12 +31,18 @@ pub struct DealInfo<T: Config> {
 	pub(super) complete_list: BoundedVec<AccountOf<T>, T::FragmentCount>,
 }
 ```
-`stage`: The stage of the order (first stage or second stage).
-`segment_list`: A list of segments for each file after it has been sliced and redundantly stored, and each segment corresponds to a list of fragments.
-`needed_list`: A list of segments that need to be stored for this order, including the fragments corresponding to each segment.
-`user`: The declarer of the order.
-`assigned_miner`: A list of storage node tasks that specifies the fragments each miner needs to store.
-`share_info`: Information about segments in the order that do not need to be uploaded and can be shared.
+`stage`: The stage of the order (first stage or second stage).  
+
+`segment_list`: A list of segments for each file after it has been sliced and redundantly stored, and each segment corresponds to a list of fragments.  
+
+`needed_list`: A list of segments that need to be stored for this order, including the fragments corresponding to each segment.  
+
+`user`: The declarer of the order.  
+
+`assigned_miner`: A list of storage node tasks that specifies the fragments each miner needs to store.  
+
+`share_info`: Information about segments in the order that do not need to be uploaded and can be shared.  
+
 `complete_list`: A list of storage nodes that have completed the task.
 
 File metadata structure includes the following fields:
@@ -49,9 +55,13 @@ pub struct FileInfo<T: Config> {
 }
 ```
 `completion`: The block height at which the file metadata was created.
+
 `stat`: The status of the file.
+
 `segment_list`: A list of data segments for the file, as well as information about the data blocks after being sliced and redundantly stored.
+
 `owner`: A list of owners of the file.
+
 Data segment information includes the following fields:
 ```rust
 pub struct SegmentInfo<T: Config> {
@@ -60,7 +70,9 @@ pub struct SegmentInfo<T: Config> {
 }
 ```
 `hash`: The hash of the data segment.
+
 `fragment_list`: A list of information about the data blocks after being sliced and redundantly stored.
+
 Data block information includes the following fields:
 ```rust
 pub struct FragmentInfo<T: Config> {
@@ -70,8 +82,11 @@ pub struct FragmentInfo<T: Config> {
 }
 ```
 `hash`: The hash of the data block.
+
 `avail`: A flag indicating whether the data block is available or not.
+
 `miner`: The account of the storage node that is storing the data block.
+
 #### Order Declaration
 Overview
 After the user processes the file according to the specification, the user can call the transaction to declare an order. After the chain checks that the file is correct, one of the following three situations will occur:
