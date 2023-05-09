@@ -27,5 +27,5 @@ If you intend to output a good scheme for CESS, you can refer to CIP-1.
 |[0001](https://github.com/CESSProject/CIPs/blob/main/CIP-0.md)   | CIP Purpose and Guidelines  | bytestocker  | Final  |
 |[0002](https://github.com/CESSProject/cess-pallet-proposal)   | Proposal for Offering Storage Pallet to Substrate FRAME  | swowk  | Final  |
 |[0003](https://github.com/CESSProject/CIPs/blob/main/CIP-2.md)   | Proof of Data Reduplication and Recovery  | swowk  | Final  |
-|[0003](https://github.com/CESSProject/CIPs/blob/main/CIP-3.md)   | The Content Delivery Network of CESS  | Shaka  | Active  |
-|[0003](https://github.com/CESSProject/CIPs/blob/main/CIP-4.md)   | Optimization of File Upload Process  | EldenYang  | Active  |
+|[0004](https://github.com/CESSProject/CIPs/blob/main/CIP-3.md)   | The Content Delivery Network of CESS  | Shaka  | Active  |
+|[0005](https://github.com/CESSProject/CIPs/blob/main/CIP-4.md)   | Optimization of File Upload Process  | EldenYang  | Active  |
