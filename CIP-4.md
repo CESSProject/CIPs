@@ -2,8 +2,7 @@
 
 | CIP | Title | Author | Status | Type | Category | Created |
 | --- | --- | --- | --- | --- | --- | --- |
-| 4 | Upload-File | cgw | Draft | Standards | Core | 23/03/22 |
-
+| 4 | Upload-File | EldenYang | Draft | Standards | Core | 23/03/22 |
 
 ## Abstract
 The document upload function introduced in this CIP refers to the process that users who have purchased storage space store their data on the CESS network. It is designed to address the situation where the three parties, namely the user, storage node, and consensus node, do not trust each other, and create a more comprehensive file upload process. This enables the three parties to authenticate whether the file has been correctly stored or to determine if their respective tasks have been performed correctly.
