@@ -2,7 +2,7 @@
 
 | CIP | Title | Author | Status | Type | Category | Created |
 | --- | --- | --- | --- | --- | --- | --- |
-| 17 | Improved exit process for storage nodes | EldenYang | Draft | Standards | Core | 23/05/10 |
+| 6 | Improved exit process for storage nodes | EldenYang | Draft | Standards | Core | 23/05/10 |
 
 
 ## Abstract
