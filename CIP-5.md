@@ -31,7 +31,7 @@ It is used to store the challenge information of this round and make it public t
 ```rust
 pub type ChallengeSnapShot<T: Config> = StorageValue<_, ChallengeInfo<T>>;
 ```
-No primary key.<br />值：ChallengeInfo <br />ChallengeInfo Struct
+No primary key.<br />Value：ChallengeInfo <br />ChallengeInfo Struct
 ```rust
 pub struct ChallengeInfo<T: pallet::Config> {
 	pub(super) net_snap_shot: NetSnapShot<BlockNumberOf<T>>,
