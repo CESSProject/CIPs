@@ -49,14 +49,14 @@ pub struct MinerInfo<AccountId, Balance, BoundedString> {
 	pub(super) lock_space: u128,
 }
 ```
-`beneficiary`: Revenue account wallet address.
-`peer_id`: The peer_id of the storage node.
-`collaterals`: Pledge amount.
-`debt`: Debt.
-`state`: Storage node status.
-`idle_space`: The idle space currently certified by the storage node.
-`service_space`: The service space stored by the storage node.
-`lock_space`: The space locked by the storage node.
+`beneficiary`: Revenue account wallet address.<br/>
+`peer_id`: The peer_id of the storage node.<br/>
+`collaterals`: Pledge amount.<br/>
+`debt`: Debt.<br/>
+`state`: Storage node status.<br/>
+`idle_space`: The idle space currently certified by the storage node.<br/>
+`service_space`: The service space stored by the storage node.<br/>
+`lock_space`: The space locked by the storage node.<br/>
 
 2. **Storage Node Lock-in Period Time Storage**
 
@@ -86,10 +86,10 @@ pub struct RestoralInfo<Account, Block> {
 	pub(super) cooling_block: Block,
 }
 ```
-`miner`: Wallet address of storage node.
-`service_space`: Service space to be restored.
-`restored_space`: Space currently restored.
-`cooling_block`: Block height of cooling period.
+`miner`: Wallet address of storage node.<br/>
+`service_space`: Service space to be restored.<br/>
+`restored_space`: Space currently restored.<br/>
+`cooling_block`: Block height of cooling period.<br/>
 #### Detail Design
 
 1. **Storage node pre-exit**
@@ -100,9 +100,9 @@ This function is set up to prevent storage nodes from performing exit operations
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/22121693/1683709770013-643000ff-5c28-40dc-824f-650de561309f.png#averageHue=%23fcfcfc&clientId=ub287f5ab-9998-4&from=paste&height=457&id=uc752c223&originHeight=503&originWidth=1159&originalType=binary&ratio=1.100000023841858&rotation=0&showTitle=false&size=33413&status=done&style=none&taskId=u0f73dde2-21aa-4ca9-b745-ff961f46503&title=&width=1053.636340799411)
 
 After initiating the pre-exit process, the storage node will enter a lock period of one day (corresponding to 28800 blocks) and its status will change to lock. After performing the pre-exit operation, the storage node cannot authenticate space, store service data, or receive rewards. At the same time, a timed task will be started. After the lock period ends, the formal exit process will be executed.
-**Prerequisite status requirements**: Positive
-**Lock status restricted behavior**: (1) Prohibition of space authentication. (2) Prohibition of storing service data. (3) Prohibition of receiving rewards. (4) Will not receive new challenges (the random selection process will not select storage nodes in Lock status).
-**Matters that need to be reminded to storage nodes**: Before pre-exit, you need to ensure that you currently have no rewards to claim. After being locked, you will not be able to receive new rewards.
+**Prerequisite status requirements**: Positive<br/>
+**Lock status restricted behavior**: (1) Prohibition of space authentication. (2) Prohibition of storing service data. (3) Prohibition of receiving rewards. (4) Will not receive new challenges (the random selection process will not select storage nodes in Lock status).<br/>
+**Matters that need to be reminded to storage nodes**: Before pre-exit, you need to ensure that you currently have no rewards to claim. After being locked, you will not be able to receive new rewards.<br/>
 **Process overview**
 
 1. Check whether the storage node status is Positive.
@@ -111,7 +111,7 @@ After initiating the pre-exit process, the storage node will enter a lock period
 4. Lock the storage node, create a lock period, and store it in MinerLock Storage.
 5. Create a formal exit timed task.
 
-**Interface**
+**Interface** <br/>
 FileBank.miner_exit_pre
 
 | Interface parameters | Parameter type | Parameter description |
@@ -120,11 +120,11 @@ FileBank.miner_exit_pre
 
 2. **Storage node exit**
 
-**Function overview**
+**Function overview** <br/>
 Triggered by the timed task of the previous step, after the lock period of the storage node ends, the chain network begins to execute the formal exit process for it. After checking that the storage node that has passed the lock period has no abnormalities, it will be changed to the exit status and designated as a recovery target. Transfer all service data stored by it to other storage nodes. The restricted behavior of storage nodes in the exit state is the same as that in the lock state.
-Finally, unclaimed and unissued bonuses will be returned to the bonus pool.
-Note: The formal exit process is irreversible. If the storage node wants to rejoin the network, it needs to wait for the redemption of the deposit and re-register as a storage node.
-**Process overview**
+Finally, unclaimed and unissued bonuses will be returned to the bonus pool. <br/>
+Note: The formal exit process is irreversible. If the storage node wants to rejoin the network, it needs to wait for the redemption of the deposit and re-register as a storage node. <br/>
+**Process overview** <br/>
 
 1. Check whether the storage node status is lock.
 2. Determine whether the lock period has reached its deadline. If it has not reached its deadline, end this process.
@@ -133,25 +133,25 @@ Note: The formal exit process is irreversible. If the storage node wants to rejo
 5. Change the storage node status to exit.
 6. Clear the reward table of the storage node (one of the reasons why the process is irreversible).
 
-**Interface**
-FileBank.miner_exit（root权限调用）
+**Interface** <br/>
+FileBank.miner_exit（root permission call）
 
 | Interface parameters | Parameter type | Parameter description |
 | --- | --- | --- |
 | origin | OriginFor | Signature source |
 | miner | AccountOf<T> | Wallet address of storage node. |
 
-3. Storage node redemption pledge
+**3. Storage node redemption pledge**
 
-**Function overview**
-After the service data of the storage node is transferred, the deposit can be redeemed, but the storage node needs to actively call the transaction for redemption. After the deposit is redeemed, the metadata of the storage node will be cleared, which also means that the exit process is over.
+**Function overview** <br/>
+After the service data of the storage node is transferred, the deposit can be redeemed, but the storage node needs to actively call the transaction for redemption. After the deposit is redeemed, the metadata of the storage node will be cleared, which also means that the exit process is over. <br/>
 **Process overview**
 
 1. Determine whether the storage node status is exit status.
 2. Check the transfer status of the storage node’s service data. If it is not completed, end the process.
 3. Return the deposit of the storage node.
 
-**Interface**
+**Interface** <br/>
 FileBank.miner_withdraw
 
 | Interface parameters | Parameter type | Parameter description |
