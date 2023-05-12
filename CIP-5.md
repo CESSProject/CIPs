@@ -2,7 +2,7 @@
 
 | CIP | Title | Author | Status | Type | Category | Created |
 | --- | --- | --- | --- | --- | --- | --- |
-| 17 | Optimization for PoDR2 validation phase | EldenYang | Draft | Standards | Core | 23/05/09 |
+| 5 | Optimization for PoDR2 validation phase | EldenYang | Draft | Standards | Core | 23/05/09 |
 
 ## Abstract
 In order to solve the problem of too many transactions generated on the chain during challenges, this chapter proposes to optimize the PoDR2 algorithm to reduce the pressure on the chain during random challenges and ensure the reliability and availability of service data and idle data. Based on a trusted computing environment (TEE Worker), the proofs submitted by storage nodes are verified to ensure fairness and impartiality of the verifier. At the same time, in order to reduce the number of transactions, the data structure related to generating challenge information is optimized, and changes have also been made to the challenge scope and challenge trigger frequency. Most importantly, aggregate proof technology is adopted so that storage nodes can submit all proofs about local data at one time, greatly reducing the number of interactions between storage nodes and the chain.
