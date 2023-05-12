@@ -68,7 +68,8 @@ It stores the verification tasks that each consensus node is responsible for, as
 pub(super) type UnverifyProof<T: Config> = 
     StorageMap<_, Blake2_128Concat, AccountOf<T>, BoundedVec<ProveInfo<T>, T::VerifyMissionMax>, ValueQuery>;
 ```
-主键：AccountOf <br />BoundedVec<ProveInfo<T>, T::VerifyMissionMax> <br />Primary key: AccountOf consensus node wallet address.<br />Value: BoundedVec<ProveInfo<T>, T::VerifyMissionMax> list of proof information.<br />Proof of Information Structure
+Primary key: AccountOf consensus node wallet address.<br />Value: BoundedVec<ProveInfo<T>, T::VerifyMissionMax> list of proof information.  
+Proof of Information Structure
 ```rust
 pub struct ProveInfo<T: pallet::Config> {
 	pub(super) snap_shot: MinerSnapShot<AccountOf<T>>,
@@ -76,7 +77,7 @@ pub struct ProveInfo<T: pallet::Config> {
 	pub(super) service_prove: BoundedVec<u8, T::SigmaMax>,
 }
 ```
-`snap_shot`: <br />`idle_prove`: <br />`service_prove`: <br />snap_shot: Store node snapshot information.<br />idle_prove: Store node idle proof information (partial).<br />service_prove: Store node service proof information (partial).
+<br />`snap_shot`: Store node snapshot information.<br />`idle_prove`: Store node idle proof information (partial).<br />`service_prove`: Store node service proof information (partial).
 
 3. **Challenge Deadline Storage**
 
