@@ -5,13 +5,13 @@
 | 5 | Optimization for PoDR2 validation phase | EldenYang | Draft | Standards | Core | 23/05/09 |
 
 ## Abstract
-In order to solve the problem of too many transactions generated on the chain during challenges, this CIP proposes to optimize the PoDR2 algorithm to reduce the pressure on the chain during random challenges and ensure the reliability and availability of service data and idle data. Based on a trusted computing environment (TEE Worker), the proofs submitted by storage nodes are verified to ensure fairness and impartiality of the verifier. At the same time, in order to reduce the number of transactions, the data structure related to generating challenge information is optimized, and changes have also been made to the challenge scope and challenge trigger frequency. Most importantly, the algorithm of aggregating proof is adopted so that storage nodes can submit all proofs about local data at one time, greatly reducing the number of interactions between storage nodes and the chain.
+To solve the problem of too many transactions generated on the chain during challenges, this CIP proposes to optimize the PoDR2 algorithm to reduce the pressure on the chain during random challenges and ensure the reliability and availability of service data and idle data. Based on a trusted computing environment (TEE Worker), the proofs submitted by storage nodes are verified to ensure the fairness and impartiality of the verifier. At the same time, to reduce the number of transactions, the data structure related to generating challenge information is optimized, and changes have also been made to the challenge scope and challenge trigger frequency. Most importantly, the algorithm of aggregating proof is adopted so that storage nodes can submit all proofs about local data at one time, greatly reducing the number of interactions between storage nodes and the chain.
 ## Motivation
 
-1. The duration of random challenges is too long, resulting in excessive resource consumption of the entire network for a period of time.
-2. As the amount of data increases, the pressure on the chain gradually increases and there is a risk of excessive accumulation of transactions in the short term.
+1. The duration of random challenges is too long, resulting in excessive resource consumption of the entire network for a while.
+2. As the amount of data increases, the pressure on the chain gradually increases, and there is a risk of excessive accumulation of transactions in the short term.
 3. The untrustworthiness of the verifier’s workflow poses certain security risks.
-4. When a storage node itself stores too much data, the proportion of resources consumed by calculating proofs will be too large, causing other main business processes to lag behind.
+4. When a storage node stores too much data, the proportion of resources consumed by calculating proofs will be too large, causing other main business processes to lag.
 ## Specification
 ### Overall Process
 
@@ -50,7 +50,7 @@ pub struct NetSnapShot<Block> {
 }
 
 ```
-`start`: Challenge generation time.<br />`life`: Challenge declaration cycle.<br />`total_reward`: Total reward for this round’s challenge prize pool.<br />`total_idle_space`: Total idle space for this round of challenge.<br />`total_service_space`: Total service space for this round of challenge.<br />`random`: Public random number for this round of challenge.<br />Storage node snapshot information structure.
+`start`: Challenge generation time.<br />`life`: Challenge declaration cycle.<br />`total_reward`: Total reward for this round’s the challenge prize pool.<br />`total_idle_space`: Total idle space for this round of the challenge.<br />`total_service_space`: Total service space for this round of the challenge.<br />`random`: Public random number for this round of the challenge.<br />Storage node snapshot information structure.
 ```rust
 pub struct MinerSnapShot<AccountId> {
 	pub(super) miner: AccountId,
@@ -132,7 +132,7 @@ Key: Wallet address of storage node for AccountOf.<br />Value: u32 liquidation c
 5. Lock the off-chain worker.
 6. Randomly draw the data segment number for this round of challenges, generate a random number for each drawn data segment number, record the current network bonus pool, and record the current block height.
 7. Obtain a list of storage nodes in the entire network and randomly draw 10% of (non-lock and non-exit status) storage nodes as challenge targets for this round.
-8. Traverse storage node information, accumulate total computing power as total computing power for this round of challenges, and save snapshots of each storage node.
+8. Traverse storage node information, accumulate total computing power as the total computing power for this round of challenges, and save snapshots of each storage node.
 9. Combine all storage node snapshots and network snapshots to send transactions to the chain and submit challenge proposals.
 10. The same challenge proposal, when the number of submitters reaches 2/3 of the number of executors, the proposal is passed and officially generates a challenge. Interface definition
 
@@ -140,7 +140,7 @@ No input parameters.
 
 2. **Proof Submission**
 
-**Function Overview**<br />The storage node submits two aggregated proofs, and the chain network randomly assigns the proof information of the storage node to any consensus node for verification. Clear the storage node snapshot, record the storage node proof information, representing that the storage node has submitted proof for this challenge.<br />**Process Overview**
+**Function Overview**<br />The storage node submits two aggregated proofs, and the chain network randomly assigns the proof information of the storage node to any consensus node for verification. Clear the storage node snapshot, and record the storage node proof information, representing that the storage node has submitted proof for this challenge.<br />**Process Overview**
 
 1. Determine whether the snapshot exists. The existence of a snapshot means that the storage node needs to submit proof.
 2. Combine the snapshot information and the two aggregated proofs submitted by the storage node into new information.
@@ -160,10 +160,10 @@ No input parameters.
 **Function Overview**<br />The scheduling node submits the verification result of the proof. If both pass, the storage node can obtain rewards. If one fails, the storage node will not be able to obtain rewards for this round. When the proof fails, it will not be punished immediately. Only when the proof verification fails twice in a row (the two types of service and idle will be calculated separately for the number of failures), the storage node will be punished.<br />To prevent scheduling from deliberately doing evil, the chain network will verify the SGX signature to ensure that the verification work is carried out in SGX.<br />**Process Overview**
 
 1. Check that the signature scheduling node has this task verification task.
-2. Confirm the TEE worker signature.
+2. Confirm the TEE worker's signature.
 3. If there is an error in the idle proof verification result, after accumulating one more idle proof consecutive failure time, if the consecutive failure times reach two or more, the storage node will be punished for idleness. If there is no error, reset the idle proof consecutive failure count to zero.
 4. If there is an error in the service proof verification result, after accumulating one more idle proof consecutive failure time, if the consecutive failure times reach two or more, the storage node will be punished for service. If there is no error, reset the service proof consecutive failure count to zero.
-5. Only when both aggregated proofs pass will rewards be calculated for the storage node. If one fails, the reward will be cancelled.
+5. Only when both aggregated proofs pass will rewards be calculated for the storage node. If one fails, the reward will be canceled.
 6. The scheduling verification task ends and cleans up this task record.
 
 **Interface**<br />SegmentBook.submit_verify_result
