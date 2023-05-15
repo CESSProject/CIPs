@@ -7,10 +7,10 @@
 
 ## Abstract
 This proposal is to adapt the file recovery mechanism and redesign the exit process of the storage node. For some special cases, such as during the random challenge proposal period, the storage node performs an exit operation and a mechanism has been established. The exit of the storage node will go through a lock-in period and a transfer period, and then the storage node will autonomously call the transaction to redeem the pledge.
-This proposal also imposes strict restrictions on the behavior of storage nodes during the lock-in period and transfer period. When in the lock-in period or transfer period, the storage node will display the corresponding status for user confirmation. During the transfer period, the storage node will become a recovery target for the entire network. By making it more valuable to store service data than idle data, it encourages storage nodes across the network to transfer or recover data from recovery targets. At the same time, in order to facilitate the storage node to redeem the pledge as soon as possible, after transferring a certain number of bytes of data, a part of the deposit can be redeemed until all are redeemed.
+This proposal also imposes strict restrictions on the behavior of storage nodes during the lock-in period and transfer period. When in the lock-in period or transfer period, the storage node will display the corresponding status for user confirmation. During the transfer period, the storage node will become a recovery target for the entire network. By making it more valuable to store service data than idle data, it encourages storage nodes across the network to transfer or recover data from recovery targets. At the same time, to facilitate the storage node to redeem the pledge as soon as possible, after transferring a certain number of bytes of data, a part of the deposit can be redeemed until all are redeemed.
 ## Motivation
 1. The current exit mechanism of the storage node is not rigorous enough, which allows dishonest storage nodes to use the exit mechanism to evade impending punishment. If the storage node exits immediately, it will have a certain impact on the economy of the CESS network.
-2. One problem currently existing in the network is how to deal with data loss. When a storage node exits, in order to prevent data loss, it is necessary to recover or transfer the data stored on that node.
+2. One problem currently existing in the network is how to deal with data loss. When a storage node exits, to prevent data loss, it is necessary to recover or transfer the data stored on that node.
 ## Specification
 ### Overall Process
 1. The storage node calls the miner_exit_pre transaction to initiate a pre-exit transaction. The storage node will enter a one-day lock-in period (recorded in block height), during which the status will change to lock. If a challenge is received during this period, it must be completed normally.
@@ -21,11 +21,11 @@ This proposal also imposes strict restrictions on the behavior of storage nodes 
 ### Blockchain Node Interface
 - Storage node pre-exit interface, `FileBank.miner_exit_pre`. 
 - Storage node exit interface, `FileBank.miner_exit`. 
-- Storage node redeem pledge interface, `FileBank.withdraw`.
+- Storage node redeems pledge interface, `FileBank.withdraw`.
 #### Data Structure
 
 1. **Storage Node Information Storage**
-Stores some basic information of StorageNode. The service_space field will be synchronously recorded in the recovery target storage pool when StorageNode exits.
+Stores some basic information about StorageNode. The service_space field will be synchronously recorded in the recovery target storage pool when StorageNode exits.
 ```rust
 pub(super) type MinerItems<T: Config> = CountedStorageMap<
 		_,
@@ -78,11 +78,11 @@ Value: RestoralInfo Recovery target information.
 Recovery target information structure
 ```rust
 pub struct RestoralInfo<Account, Block> {
-    // Whether to add this field depends on the specific situation during development
+    // Whether to add this field depends on the specific situation during the development
     pub(super) miner: Account, 
 	pub(super) service_space: u128,
 	pub(super) restored_space: u128,
-    // Whether to add this field depends on the specific situation during development
+    // Whether to add this field depends on the specific situation during the development
 	pub(super) cooling_block: Block,
 }
 ```
@@ -109,7 +109,7 @@ After initiating the pre-exit process, the storage node will enter a lock period
 2. Check MinerLock Storage to determine whether the storage node is in the lock period.
 3. Update the storage node status to lock.
 4. Lock the storage node, create a lock period, and store it in MinerLock Storage.
-5. Create a formal exit timed task.
+5. Create a formal exit-timed task.
 
 **Interface** <br/>
 FileBank.miner_exit_pre
@@ -126,7 +126,7 @@ Finally, unclaimed and unissued bonuses will be returned to the bonus pool. <br/
 Note: The formal exit process is irreversible. If the storage node wants to rejoin the network, it needs to wait for the redemption of the deposit and re-register as a storage node. <br/>
 **Process overview** <br/>
 
-1. Check whether the storage node status is lock.
+1. Check whether the storage node status is locked.
 2. Determine whether the lock period has reached its deadline. If it has not reached its deadline, end this process.
 3. Record the current service space of the storage node, create relevant information about the recovery target, and store it in RestoredTarget Storage.
 4. Return the unissued rewards and unclaimed rewards of the storage node to the bonus pool (one of the reasons why the process is irreversible).
