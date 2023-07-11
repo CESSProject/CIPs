@@ -6,7 +6,7 @@
 
 CESS as a distributed storage network, file download is the most frequently used feature by users and the download speed is an important performance indicator that affects user experience.The CESS network needs a content delivery network (CDN) to avoid bottlenecks or mishaps that may affect data transmission speed and stability as much as possible, making file downloads faster and more stable.
 
-## Motivatio
+## Motivation
 
 To provide a faster download experience for end users, CESS identified the bottlenecks that currently hamper file download speeds and has developed a proposal to solve them.
 
