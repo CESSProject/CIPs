@@ -1,7 +1,3 @@
-
-
-
-
 Abstract
 The consensus node election mechanism introduces a staking score, where the amount of stake affects the probability of being elected as a round-robin node. This encourages stable operation of consensus nodes, attracts nominators, and increases the chances of being elected as a round-robin node. Stakeholders can also share in the consensus block rewards. Additionally, it reduces the entry barrier for new consensus nodes, increases the number of consensus nodes, and promotes decentralization of the CESS network.
 Motivation
