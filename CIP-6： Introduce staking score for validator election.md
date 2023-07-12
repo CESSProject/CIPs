@@ -45,9 +45,9 @@ Example：
 
 | Nodes | Staked Amount |  Staking Score            |
 | ----- | ------------- | ------------------------- |
-| A     | 100万          | 0 (directly disqualified) |
-| B     | 300万          | 30                        |
-| C     | 1000万         | 100                       |
+| A     | 1,000,000     | 0 (directly disqualified) |
+| B     | 3,000,000     | 30                        |
+| C     | 10,000,000    | 100                       |
 
 #### Staking Reward Distribution
 
