@@ -31,8 +31,13 @@ The staked amount threshold for competing as a round-robin node is 3 million CES
 At the moment of election triggering, candidate nodes with a staked amount less than 3 million cannot compete. The staked amount of the node with the highest staked amount among all candidates is set as the benchmark with a staking score of 100. The staking score of other nodes is calculated as (node's staked amount / maximum staked amount) * 100.
 Example：
 
-**Staking Reward Distribution**
-onsensus nodes can set a commission rate to cover machine operation costs. The commission is set as a percentage of the block reward and is directly paid to the consensus node. The remaining portion, excluding the commission, is distributed proportionally based on (staking amount of the node / total staked amount of that node).
+
+
+
+Staking Reward Distribution
+
+consensus nodes can set a commission rate to cover machine operation costs. The commission is set as a percentage of the block reward and is directly paid to the consensus node. The remaining portion, excluding the commission, is distributed proportionally based on (staking amount of the node / total staked amount of that node).
+
 Example: 
 A stakes 1 million CESS
 Total staked amount for the consensus node is 4 million CESS (A represents 25% of this). 
