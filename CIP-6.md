@@ -1,7 +1,5 @@
 # CIP-6： Introduce staking score for validator election
 
-***
-
 | CIP | Title              | Author | Status | Type      | Category | Created  |
 | --- | ------------------ | ------ | ------ | --------- | -------- | -------- |
 | 20  | Consensus Election | Shaka  | review | Standards | Core     | 23/07/05 |
