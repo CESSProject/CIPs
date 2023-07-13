@@ -1,4 +1,4 @@
-# CIP-20： Introduce staking score for validator election
+# CIP-6： Introduce staking score for validator election
 
 ***
 
