@@ -1,4 +1,4 @@
-# CIP-6： Introduce staking score for validator election
+# Introduce staking score for validator election
 
 | CIP | Title              | Author | Status | Type      | Category | Created  |
 | --- | ------------------ | ------ | ------ | --------- | -------- | -------- |
