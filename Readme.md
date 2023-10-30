@@ -30,3 +30,6 @@ If you intend to output a good scheme for CESS, you can refer to [CIP-0](https:/
 |[0003](https://github.com/CESSProject/CIPs/blob/main/CIP-3.md)   | The Content Delivery Network of CESS  | Shaka  | Active  |
 |[0004](https://github.com/CESSProject/CIPs/blob/main/CIP-4.md)   | Optimization of File Upload Process  | EldenYang  | Active  |
 |[0005](https://github.com/CESSProject/CIPs/blob/main/CIP-5.md)   | Optimization for PoDR2 validation phase  | EldenYang  | Active  |
+|[0006](https://github.com/CESSProject/CIPs/blob/main/CIP-6.md)   | Introduce staking score for validator election  | Shaka  | Active  |
+|[0007](https://github.com/CESSProject/CIPs/blob/main/CIP-7.md)   | File upload process upgrade  | Elden Yang  | Active  |
+|[0008](https://github.com/CESSProject/CIPs/blob/main/CIP-8.md)   | Proof of Idle Space Algorithm Proof and Verification Process Optimization  | Valor  | Active  |
