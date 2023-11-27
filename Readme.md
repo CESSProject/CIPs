@@ -34,4 +34,3 @@ If you intend to output a good scheme for CESS, you can refer to [CIP-0](https:/
 |[0007](https://github.com/CESSProject/CIPs/blob/main/CIP-7.md)   | File upload process upgrade  | Elden Yang  | Final  |
 |[0008](https://github.com/CESSProject/CIPs/blob/main/CIP-8.md)   | Proof of Idle Space Algorithm Proof and Verification Process Optimization  | Valor  | Final  |
 |[0009](https://github.com/CESSProject/CIPs/blob/main/CIP-9.md)   | Code refactoring for file upload  | Su-nl-it  | Active  |
-Code refactoring for file upload	Su-nl-it
