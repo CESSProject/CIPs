@@ -15,7 +15,7 @@ CESS Improvement Proposals (CIPs) are the primary mechanism by which the CESS en
 
 CESS is a key link in Polkadot ecology. It can not only provide elastic and scalable storage for the whole Polkadot ecology, but also provide friendly storage services for other ecological blockchain applications. At present, CIPS is not very perfect. We are gradually soliciting good ideas from the community. Once adopted, we will give rich returns.
 
-# The fomat of CIPs 
+# The format of CIPs 
 At present, there are no strict format requirements for CIPS management, but we suggest to adopt these parts, such as the purpose of CIPS, the simple background of CIPS, the idea of CIPS, the templet advice of CIPS,etc. 
 
 If you intend to output a good scheme for CESS, you can refer to [CIP-0](https://github.com/CESSProject/CIPs/blob/main/CIP-0.md).
